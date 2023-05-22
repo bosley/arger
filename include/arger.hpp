@@ -94,9 +94,10 @@ public:
   //!    		 in the event help is printed.
   //! \note The callback funtion is meant to allow the user to clean
   //!				up and exit after help is called if that is the
-  //! desired 				behavior. If no callback is provided, the program will
-  //! continue to parse arguments and may throw errors if there
-  //! are missing required arguments.
+  //! 			desired behavior. If no callback is provided, 
+	//!				the program will
+  //! 			continue to parse arguments and may throw errors if there
+  //! 			are missing required arguments.
   arger_c(post_help_cb_f post_help_cb) : post_help_cb_(post_help_cb) {}
 
   //! \brief Constructor
@@ -142,8 +143,9 @@ public:
   //! \param enable True to enable, false to disable
   //! \note If automatic help is enabled, the parser will
   //!				automatically print the help message if the help
-  //!flag 				is found. If automatic help is disabled, the user 				must call their own
-  //!help function
+  //!				flagis found. If automatic help is disabled, the 
+	//! 			user must call their own
+  //! 			help function
   void set_auto_help(bool enable) { auto_help_enable_ = enable; }
 
   //! \brief Get all items that were not matched
