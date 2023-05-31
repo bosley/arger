@@ -120,7 +120,7 @@ public:
   //! \param description The description of the flag
   //! \param default_value The default value of the flag
   bool add_flag(const std::set<std::string> arg, const std::string &description,
-                bool default_value, bool required = false) {
+                const arg_t default_value = false, bool required = false) {
     return add_arg(arg, description, default_value, required, true);
   }
 
@@ -282,7 +282,7 @@ private:
   }
 
   inline bool handle_flag(const std::string &arg) {
-    arguments_map_[arg]->value = "true";
+    arguments_map_[arg]->value = "1";
     conditionally_mark_found(arg);
     return true;
   }
