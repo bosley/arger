@@ -74,7 +74,6 @@ using error_cb_f = std::function<void(const args::errors_e, const std::string)>;
 //! \brief Argument parser
 class arger_c {
 public:
-  arger_c() = delete;
   arger_c(const arger_c &) = delete;
   arger_c(arger_c &&) = delete;
   arger_c &operator=(const arger_c &) = delete;
@@ -88,6 +87,9 @@ public:
       }
     }
   }
+
+  //! \brief Construct arger and disable auto help
+  arger_c() : auto_help_enable_(false) {}
 
   //! \brief Constructor
   //! \param post_help_cb Callback function to be called
@@ -160,7 +162,7 @@ public:
     std::vector<std::string> args(argv, argv + argc);
 
     program_name_ = args[0];
-    for (std::size_t i = 0; i < args.size(); ++i) {
+    for (std::size_t i = 1; i < args.size(); ++i) {
       // If auto help is enabled and the help flag is found,
       // call the post help callback and continue
       if (auto_help_enable_ && (args[i] == "-h" || args[i] == "--help")) {
